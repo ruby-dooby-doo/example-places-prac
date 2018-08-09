@@ -9,7 +9,12 @@ class Api::PlacesController < ApplicationController
       name: params[:name],
       address: params[:address]
     )
-    @place.save
-    render 'show.json.jbuilder'
+    if @place.save
+      # happy path
+      render 'show.json.jbuilder'
+    else
+      # sad path
+      render json: {errors: @place.errors.full_messages}, status: :bad_request
+    end
   end
 end

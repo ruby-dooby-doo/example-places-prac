@@ -24,6 +24,22 @@
 
     <h1>{{ message }}</h1>
 
+    <div v-for="place in places">
+      <p>{{ place.id }}</p>
+      <p>{{ place.name }}</p>
+      <p>{{ place.address }}</p>
+      <hr>
+    </div>
+
+
+    <p v-for="error in errors">
+      {{ error }}
+    </p>
+    name: <input v-model="newPlace.name">
+    address: <input v-model="newPlace.address">
+    <button v-on:click="addPlace()">make a new place</button>
+
+
   </div>
 </template>
 
